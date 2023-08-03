@@ -1,4 +1,10 @@
 ---
+- name: Gather facts
+  hosts: localhost
+  tasks:
+    - name: Run setup module
+      setup: 
+
 - name: Get IP Address with Ansible
   hosts: localhost
   gather_facts: yes
