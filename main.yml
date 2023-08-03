@@ -1,7 +1,9 @@
 ---
-- hosts: localhost
+- name: Get IP Address with Ansible
+  hosts: localhost
   gather_facts: yes
   tasks:
-    - debug: var=hostvars[inventory_hostname]['ansible_env'].SSH_CONNECTION.split(' ')[2]
-
+    - name: Display IP Address 
+      debug:
+        var: ansible_default_ipv4.address
       
