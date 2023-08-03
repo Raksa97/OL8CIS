@@ -1,9 +1,8 @@
 ---
 - name: Get IP Address with Ansible
   hosts: localhost
-  gather_facts: yes
+  gather_facts: no
   tasks:
     - name: Display IP Address 
-      debug:
-        var: ansible_all_ipv4_addresses
+      shell: "ip addr show {{ item }} | grep 'inet ' | awk '{print $2}'"
       
