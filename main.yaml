@@ -1,9 +1,10 @@
 ---
-- name: Get IP Address with Ansible
-  hosts: localhost
-  gather_facts: true
+- hosts: localhost
   tasks:
-    - name: Get IP Address
+    - name: Get IPv4 address
+      ansible.builtin.shell: hostname -I | awk '{print $1}'
+      register: ipv4_address
+
+    - name: Display IPv4 address
       ansible.builtin.debug:
-        var: ansible_default_ipv4_address
-          
+        var: ipv4_address.stdout
