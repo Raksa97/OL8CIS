@@ -6,3 +6,4 @@
     - name: Get IP Address
       ansible.builtin.debug:
         var: ansible_default_ipv4_address
+          
