@@ -1,15 +1,9 @@
 ---
-- name: Gather facts
-  hosts: localhost
-  tasks:
-    - name: Run setup module
-      setup: 
-
 - name: Get IP Address with Ansible
   hosts: localhost
   gather_facts: yes
   tasks:
     - name: Display IP Address 
       debug:
-        var: ansible_default_ipv4.address
+        var: ansible_all_ipv4_addresses
       
