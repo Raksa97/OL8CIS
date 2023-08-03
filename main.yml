@@ -2,7 +2,6 @@
 - hosts: localhost
   gather_facts: yes
   tasks:
-    - name: Show IP Address
     - debug: var=hostvars[inventory_hostname]['ansible_env'].SSH_CONNECTION.split(' ')[2]
 
       
