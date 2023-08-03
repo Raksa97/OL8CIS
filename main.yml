@@ -1,17 +1,8 @@
 ---
 - name: Get IP Address with Ansible
   hosts: localhost
-  gather_facts: no
+  gather_facts: yes
   tasks:
-    - name: List Network Interfaces
-      shell: "ip addr show | grep '^[0-9]' | awk '{print $2}' | sed 's/://'"
-      register: interface_result
-    - name: Get IP Addresses
-      shell: "ip addr show {{ item }} | grep 'inet ' | awk '{print $2}'"
-      register: ip_result
-      loop: "{{ interface_result.stdout_lines }}"
-    - name: Display Interface List
+    - name: Get IP Address
       debug:
-        msg: item.stdout
-      with_items: "{{ip_result.results}}"
-      
+        var: ansible_ens160.ipv4.address
